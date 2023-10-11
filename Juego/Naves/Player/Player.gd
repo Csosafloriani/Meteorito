@@ -37,5 +37,9 @@ func player_input() -> void:
 		dir_rotacion -= 1
 	elif Input.is_action_pressed("rotar_horario"):
 		dir_rotacion += 1
-	
+	# Disparo
+	if Input.is_action_pressed("disparo_principal"):
+		canion.set_esta_disparando(true)
+	if Input.is_action_just_released("disparo_principal"):
+		canion.set_esta_disparando(false)
 	

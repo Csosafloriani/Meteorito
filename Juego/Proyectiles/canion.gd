@@ -36,5 +36,14 @@ func almacenar_puntos_disparo() -> void:
 		if nodo is Position2D:
 			puntos_disparo.append(nodo)
 
-func disparar():
-	pass
+func disparar() -> void:
+	esta_enfriado = false
+	timer_enfriamiento.start()
+	for punto_disparo in puntos_disparo:
+		disparo_sfx.play()
+		var new_proyectil:Proyectil = proyectil.instance()
+		new_proyectil.crear(punto_disparo.global_position, get_owner().rotation, velocidad_proyectil, danio_proyectil)
+		Eventos.emit_signal("disparo", new_proyectil)
+
+func _on_TimerEnfriamiento_timeout() -> void:
+	esta_enfriado = true

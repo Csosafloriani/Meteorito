@@ -28,6 +28,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="canion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 25, 0 )
 
 [node name="PuntoIzquierdo" parent="canion" index="0"]
 position = Vector2( -4, -36 )

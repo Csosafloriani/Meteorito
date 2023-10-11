@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Canion",
+"language": "GDScript",
+"path": "res://Juego/Proyectiles/canion.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Juego/Naves/Player/Player.gd"
+}, {
+"base": "Area2D",
+"class": "Proyectil",
+"language": "GDScript",
+"path": "res://Juego/Proyectiles/Proyectil.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Canion": "",
+"Player": "",
+"Proyectil": ""
 }
 
 [application]

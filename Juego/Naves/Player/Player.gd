@@ -7,6 +7,9 @@ extends RigidBody2D
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 
+## Atributos onready
+onready var canion:Canion = $canion
+
 ## Atributos
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0

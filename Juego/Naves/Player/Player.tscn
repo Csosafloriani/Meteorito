@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/player_orange.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Proyectiles/canion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.0
@@ -11,6 +12,8 @@ friction = 0.0
 radius = 36.0139
 
 [node name="Player" type="RigidBody2D"]
+z_index = 50
+collision_mask = 22
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 linear_damp = 1.0
@@ -35,5 +38,8 @@ position = Vector2( -4, -36 )
 
 [node name="PuntoDerecho" parent="canion" index="1"]
 position = Vector2( -4, 36 )
+
+[node name="LaserBeam2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 42, 0 )
 
 [editable path="canion"]

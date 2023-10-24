@@ -16,6 +16,23 @@ func crear(pos: Vector2, dir: float, vel: float, danio_p: int) -> void:
 func _physics_process(delta: float) ->void:
 	position += velocidad * delta
 
+## Metodos custom
 
+func daniar(otro_cuerpo: CollisionObject2D) -> void:
+	if otro_cuerpo.has_method("recibir_danio"):
+		otro_cuerpo.recibir_danio(1.0)
+	queue_free()
+
+## Señales internas
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.has_method("recibir_danio"):
+		area.recibir_danio(1.0)
+	queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	daniar(body)

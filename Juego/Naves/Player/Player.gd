@@ -17,12 +17,13 @@ onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var animacion:AnimationPlayer = $AnimationPlayer
+onready var impactoSFX:AudioStreamPlayer = $AudioStreamPlayer
 
 ## Atributos
 var estado_actual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
-
+var hitpoints:float = 10.0
 ## Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
@@ -60,6 +61,13 @@ func _process(delta: float) -> void:
 	player_input()
 
 ## Metodos custom
+func recibir_danio(danio:float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0 :
+		destruir()
+	impactoSFX.play()
+
+
 func controlador_estados(nuevo_estado:int) -> void:
 	match nuevo_estado:
 		ESTADO.SPAWN:

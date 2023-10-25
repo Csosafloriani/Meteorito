@@ -1,9 +1,9 @@
 extends Node2D
 
 
-var hitpoints:int = 100
+var hitpoints:float = 100.0
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	$canion.set_esta_disparando(true)
 
 func _on_Area2D_body_entered(body):

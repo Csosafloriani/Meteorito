@@ -205,6 +205,7 @@ tracks/5/keys = {
 }
 
 [node name="Escudo" type="Area2D"]
+modulate = Color( 3.59, 1.99, 0, 1 )
 collision_layer = 0
 collision_mask = 16
 script = ExtResource( 5 )

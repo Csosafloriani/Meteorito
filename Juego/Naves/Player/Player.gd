@@ -18,6 +18,7 @@ onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var animacion:AnimationPlayer = $AnimationPlayer
 onready var impactoSFX:AudioStreamPlayer = $AudioStreamPlayer
+onready var escudo:Escudo = $Escudo
 
 ## Atributos
 var estado_actual:int = ESTADO.SPAWN
@@ -51,6 +52,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if (event.is_action_released("mover_adelante") or event.is_action_released("mover_atrás")):
 		motor_sfx.sonido_off()
+	
+	# Control escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
+
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))

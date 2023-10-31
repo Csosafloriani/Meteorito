@@ -35,6 +35,9 @@ position = Vector2( 1, -37 )
 [node name="PuntoDerecho" parent="canion" index="1"]
 position = Vector2( 0, 36 )
 
+[node name="DisparoFX" parent="canion" index="2"]
+volume_db = -28.203
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [editable path="canion"]

@@ -2,9 +2,12 @@
 class_name Proyectil
 extends Area2D
 
+## Atributos Export
+export var danio:float = 0
+
 ## Atributos
 var velocidad:Vector2 = Vector2.ZERO
-var danio:float
+
 
 ## Constructor
 func crear(pos: Vector2, dir: float, vel: float, _danio_p: int) -> void:
@@ -20,7 +23,7 @@ func _physics_process(delta: float) ->void:
 
 func daniar(otro_cuerpo: CollisionObject2D) -> void:
 	if otro_cuerpo.has_method("recibir_danio"):
-		otro_cuerpo.recibir_danio(1.0)
+		otro_cuerpo.recibir_danio(danio)
 	queue_free()
 
 ## Señales internas
@@ -30,7 +33,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("recibir_danio"):
-		area.recibir_danio(1.0)
+		area.recibir_danio(danio)
 	queue_free()
 
 

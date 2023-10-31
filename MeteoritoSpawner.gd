@@ -8,12 +8,7 @@ export var rango_tamanio_meteorito:Vector2 = Vector2(0.5, 2.2)
 
 ## Metodos
 func _ready():
-	#Esto es temporal. como este script se llama antes del scipt del nivel
-	#es necesario esperar a que este listo dicho script para ejecutar el envio
-	#de las señal. Sin este "yield" se emite una señal que no recibe nadie
-	#ya que el Nivel.gd no se cargó todavia.
-	yield(owner,"ready")
-	spawnear_meteorito()
+	pass
 
 ## Metodos custom
 func spawnear_meteorito() :

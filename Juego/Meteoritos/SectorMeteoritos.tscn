@@ -6,10 +6,10 @@
 [ext_resource path="res://Juego/Meteoritos/Advertencia.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 540 )
+extents = Vector2( 5, 530 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 540 )
+extents = Vector2( 5, 530 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 960, 10 )
@@ -18,16 +18,16 @@ extents = Vector2( 960, 10 )
 extents = Vector2( 960, 10 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 10, 900 )
+extents = Vector2( 10, 890 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 10, 900 )
+extents = Vector2( 10, 890 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 1400, 10 )
+extents = Vector2( 1410, 10 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 1400, 10 )
+extents = Vector2( 1410, 10 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 52
@@ -155,6 +155,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeIzquierda"]
+position = Vector2( 5, 0 )
 shape = SubResource( 1 )
 
 [node name="BordeDerecha" type="StaticBody2D" parent="BordesNavePlayer"]
@@ -165,6 +166,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeDerecha"]
+position = Vector2( -5, 0 )
 shape = SubResource( 2 )
 
 [node name="BordeSuperior" type="StaticBody2D" parent="BordesNavePlayer"]
@@ -237,7 +239,7 @@ direccion = Vector2( 2, 1 )
 
 [node name="MeteoritoSpawner3" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( -1150, 0 )
-direccion = Vector2( 0, -1 )
+direccion = Vector2( 2, -1 )
 
 [node name="MeteoritoSpawner4" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( -1150, 360 )
@@ -257,11 +259,11 @@ direccion = Vector2( 2, -1 )
 
 [node name="MeteoritoSpawner8" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 0, -720 )
-direccion = Vector2( 1, 0 )
+direccion = Vector2( 0, 1 )
 
 [node name="MeteoritoSpawner9" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 0, 720 )
-direccion = Vector2( -1, 0 )
+direccion = Vector2( 0, -1 )
 
 [node name="MeteoritoSpawner10" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 575, -720 )
@@ -281,7 +283,7 @@ direccion = Vector2( -2, 1 )
 
 [node name="MeteoritoSpawner14" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 1150, 0 )
-direccion = Vector2( 0, 1 )
+direccion = Vector2( -1, 0 )
 
 [node name="MeteoritoSpawner15" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 1150, 360 )
@@ -298,7 +300,8 @@ direccion = Vector2( -2, -1 )
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 1, 0, 0, 0.421787 )
+mouse_filter = 2
+color = Color( 1, 0, 0, 0.431373 )
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 anchor_left = 0.5
@@ -312,6 +315,7 @@ margin_bottom = 243.5
 custom_fonts/font = SubResource( 9 )
 text = "	                        ¡ADVERTENCIA !
   LLUVIA DE METEORITOS INMINENTE"
+percent_visible = 0.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CargaEnergiaSFX.ogg-6b4c1090aaae7b9b379a820eb78815ed.oggstr"
+
+[deps]
+
+source_file="res://Juego/Naves/EstacionRecarga/CargaEnergiaSFX.ogg"
+dest_files=[ "res://.import/CargaEnergiaSFX.ogg-6b4c1090aaae7b9b379a820eb78815ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

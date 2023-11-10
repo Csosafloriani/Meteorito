@@ -8,19 +8,18 @@ export var energia:float = 8.0
 export var radio_desgaste:float = -1.6
 
 ## Variables
-var esta_activado: bool = false setget ,get_esta_activado
+var esta_activado:bool = false setget ,get_esta_activado
+var energia_original:float
+
 
 ## Metodos
-
 func _ready():
+	energia_original = energia
 	set_process(false)
 	controlar_colisionador(true)
 
 func _process(delta:float) -> void:
-	energia += radio_desgaste * delta
-	# Desgaste de energia escudo
-	if energia <= 0.0:
-		desactivar()
+	controlar_energia(radio_desgaste * delta)
 
 
 ## Setters y Getters
@@ -29,6 +28,15 @@ func get_esta_activado() -> bool:
 
 
 ## Metodos custom:
+
+func controlar_energia(consumo:float) -> void:
+	energia += consumo
+	print("escudo: ", energia)
+	if energia > energia_original:
+		energia = energia_original
+		
+	elif energia <= 0.0:
+		desactivar()
 
 func desactivar() -> void:
 	set_process(false)

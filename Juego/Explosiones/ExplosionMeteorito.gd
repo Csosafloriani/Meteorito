@@ -2,9 +2,19 @@
 class_name ExplosionMeteorito
 extends Node2D
 
+# Metodos
+func _ready():
+	$AnimationPlayer.play(elegir_explosion_aleatoria())
+
+# Metodos custom
+func elegir_explosion_aleatoria() -> String:
+	randomize()
+	var num_anim:int = $AnimationPlayer.get_animation_list().size() -1
+	var indice_anim_aleatoria:int = randi() % num_anim +1
+	var lista_animacion:Array = $AnimationPlayer.get_animation_list()
+	
+	return lista_animacion[indice_anim_aleatoria]
 
 
-
-# warning-ignore:unused_argument
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	queue_free()

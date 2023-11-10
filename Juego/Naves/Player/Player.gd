@@ -12,19 +12,21 @@ export var estela_maxima:int = 150
 
 ## Atributos onready
 onready var canion:Canion = $canion
-onready var laser:RayoLaser = $LaserBeam2D
+onready var laser:RayoLaser = $LaserBeam2D setget ,get_laser
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var animacion:AnimationPlayer = $AnimationPlayer
 onready var impactoSFX:AudioStreamPlayer = $AudioStreamPlayer
-onready var escudo:Escudo = $Escudo
+onready var escudo:Escudo = $Escudo setget ,get_escudo
 
 ## Atributos
 var estado_actual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 var hitpoints:float = 10.0
+
+
 ## Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
@@ -89,7 +91,7 @@ func controlador_estados(nuevo_estado:int) -> void:
 			canion.set_puede_disparar(false)
 			
 			#explotar
-			Eventos.emit_signal("nave_destruida", global_position, 3)
+			Eventos.emit_signal("nave_destruida", self, global_position, 3)
 			queue_free()
 		_:
 			printerr("Error de estado")
@@ -140,3 +142,11 @@ func _on_body_entered(body: Node) -> void:
 	if body is Meteorito:
 		body.destruir()
 		destruir()
+
+# Setters y Getters
+
+func get_laser() -> RayoLaser:
+	return laser
+
+func get_escudo() -> Escudo:
+	return escudo

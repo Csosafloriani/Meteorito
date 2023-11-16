@@ -1,0 +1,199 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Base2.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Estaciones/Base4.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Estaciones/Base3.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Estaciones/Base1.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.gd" type="Script" id=6]
+[ext_resource path="res://Juego/EnemigoDummy/AreaColision.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AreaColision/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotacion_anti_horario"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "rotacion_horario"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="BaseEnemiga" type="Node2D"]
+position = Vector2( 981.54, 524.45 )
+z_index = 40
+script = ExtResource( 6 )
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2( -0.33609, -0.429733 )
+
+[node name="Sprite" type="Sprite" parent="Sprites"]
+position = Vector2( 2.36932, -5.82084 )
+rotation = 3.14159
+texture = ExtResource( 5 )
+offset = Vector2( -146.452, -5.29144 )
+
+[node name="Sprite2" type="Sprite" parent="Sprites"]
+position = Vector2( 2.36932, -5.82086 )
+texture = ExtResource( 2 )
+offset = Vector2( -5.5477, 103.291 )
+
+[node name="Sprite3" type="Sprite" parent="Sprites"]
+position = Vector2( 2.36932, -5.82086 )
+texture = ExtResource( 4 )
+offset = Vector2( -1.5477, -161.709 )
+
+[node name="Sprite4" type="Sprite" parent="Sprites"]
+position = Vector2( 2.36932, -5.82086 )
+texture = ExtResource( 3 )
+offset = Vector2( -1.5477, -114.709 )
+
+[node name="AreaColision" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 27
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AreaColision"]
+position = Vector2( -14.1563, 61.3948 )
+polygon = PoolVector2Array( -41.9088, -222.041, 1.54211, -253.506, 27.7625, -254.255, 68.966, -220.543, 32.9784, -96.5958, 63.7217, -73.7089, 198.569, -75.9563, 199.319, -46.7393, 64.4709, -48.9868, 30.3057, -27.9966, 26.264, 227.451, 3.78937, 227.451, 1.54224, -26.5122, -23.1798, -49.736, -122.817, -50.4852, -122.068, -73.7089, -23.1798, -72.9598, 2.29138, -96.9327 )
+
+[node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="SpriteZonaRecarga" parent="AreaAtraccion" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 1 )
+anims/rotacion_anti_horario = SubResource( 2 )
+anims/rotacion_horario = SubResource( 3 )
+
+[node name="ImpactoSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
+
+[editable path="AreaAtraccion"]

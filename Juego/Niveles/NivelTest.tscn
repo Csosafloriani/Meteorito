@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -11,18 +11,34 @@
 [ext_resource path="res://Juego/Niveles/Fondos/Negro.png" type="Texture" id=9]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=10]
 [ext_resource path="res://Juego/Naves/EstacionRecarga/EstacionRecarga.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
+enemigo_interceptor = ExtResource( 12 )
 explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 7 )
 
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2083, 1035 )
+
+[node name="BaseEnemiga" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2323, 315 )
+
+[node name="TriggersEnemigosInterceptores" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersEnemigosInterceptores" instance=ExtResource( 5 )]
+position = Vector2( 1408, 1037 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 1816, 1313 )
+position = Vector2( 845, 1447 )
 tipo_peligro = "Meteorito"
 numero_peligros = 12
 
@@ -30,10 +46,6 @@ numero_peligros = 12
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
 position = Vector2( 3241, 1075 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624, 102 )
-potencia_rotacion = 200
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )

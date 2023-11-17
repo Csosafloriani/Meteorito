@@ -13,10 +13,12 @@ onready var impactoSFX:AudioStreamPlayer = $AudioStreamPlayer
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var canion:Canion = $canion
 
+## Atributos Export
+export var hitpoints:float = 10.0
 
 ## Atributos
 var estado_actual:int = ESTADO.SPAWN
-var hitpoints:float = 10.0
+
 
 
 ## Metodos

@@ -24,36 +24,36 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 7 )
 rele_masa = ExtResource( 14 )
-tiempo_limite = 25
+tiempo_limite = 120
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 4048, 1280 )
+position = Vector2( 2016, 1982 )
 
 [node name="TriggersEnemigosInterceptores" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersEnemigosInterceptores" instance=ExtResource( 5 )]
-position = Vector2( 2336, 2248 )
+position = Vector2( 3864, 1760 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
 
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( -151, 1420 )
+position = Vector2( 1033, 500 )
 tipo_peligro = "Meteorito"
 numero_peligros = 12
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( 3241, 1075 )
+position = Vector2( 2705, 1699 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
-position = Vector2( 2323, 315 )
+position = Vector2( 2667, 403 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -66,6 +66,7 @@ script = ExtResource( 10 )
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="RestartTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="ActualizadorTimer" type="Timer" parent="."]
 

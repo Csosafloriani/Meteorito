@@ -68,7 +68,7 @@ autoplay = "fade_in"
 anims/RESET = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 
 [node name="Label" parent="InfoZonaRecarga" index="1"]
 margin_left = 0.0
@@ -79,7 +79,7 @@ text = "En Zona De Recarga"
 align = 1
 valign = 1
 
-[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+[node name="InfoMeteoritos" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 margin_left = 11.0
 margin_top = 947.0
 margin_right = 390.0
@@ -94,7 +94,7 @@ text = ""
 align = 1
 valign = 1
 
-[node name="InfoTiempoResta" parent="." instance=ExtResource( 3 )]
+[node name="InfoTiempoResta" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -379.0
@@ -104,7 +104,17 @@ margin_right = 0.0
 align = 1
 valign = 1
 
-[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+[node name="InfoLaser" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -379.0
+margin_top = -120.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="InfoEscudo" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -118,3 +128,4 @@ margin_bottom = 0.0
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoResta"]
 [editable path="InfoLaser"]
+[editable path="InfoEscudo"]

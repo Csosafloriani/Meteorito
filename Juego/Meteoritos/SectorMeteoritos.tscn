@@ -5,7 +5,6 @@
 [ext_resource path="res://TemporalAssets/Fonts/Kenney Future01.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Juego/Meteoritos/Advertencia.ogg" type="AudioStream" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 530 )
 
@@ -302,7 +301,7 @@ direccion = Vector2( -2, -1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 1, 0, 0, 0.431373 )
+color = Color( 1, 0, 0, 0.100654 )
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 anchor_left = 0.5
@@ -314,9 +313,10 @@ margin_top = -243.5
 margin_right = 587.0
 margin_bottom = 243.5
 custom_fonts/font = SubResource( 9 )
-text = "	                        ¡ADVERTENCIA !
+text = "¡ ADVERTENCIA!
   LLUVIA DE METEORITOS INMINENTE"
-percent_visible = 0.0
+align = 1
+valign = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -26,8 +26,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action("recarga_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
 	
-	if event.is_action_released("recarga_escudo") or event.is_action_released("recarga_laser"):
+	if event.is_action_released("recarga_laser"):
 		Eventos.emit_signal("ocultar_energia_laser")
+		carga_sfx.stop()
+		$VacioSFX.stop()
+	elif event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 		carga_sfx.stop()
 		$VacioSFX.stop()
 

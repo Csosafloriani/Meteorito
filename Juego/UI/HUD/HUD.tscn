@@ -93,5 +93,16 @@ text = ""
 align = 1
 valign = 1
 
+[node name="InfoTiempoResta" parent="." instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -379.0
+margin_right = 0.0
+
+[node name="Label" parent="InfoTiempoResta" index="1"]
+align = 1
+valign = 1
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
+[editable path="InfoTiempoResta"]

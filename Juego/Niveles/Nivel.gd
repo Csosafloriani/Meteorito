@@ -10,6 +10,7 @@ export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var tiempo_transicion_camara:float = 2.0
 export var rele_masa:PackedScene = null
+export var tiempo_limite:int = 10
 
 ## Atributos onready
 onready var contenedor_enemigos:Node
@@ -17,6 +18,7 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var actualizador_timer:Timer = $ActualizadorTimer
 
 ## Atributos
 var meteoritos_totales:int = 0
@@ -25,6 +27,10 @@ var player:Player = null
 
 ## Metodos
 func _ready() -> void:
+	Eventos.emit_signal("nivel_iniciado")
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
+	#Timer tiempo nivel
+	actualizador_timer.start()
 	#Desactivar puntero
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectar_seniales()
@@ -35,6 +41,15 @@ func _ready() -> void:
 
 
 ## Metodos custom
+func destruir_nivel() -> void:
+	crear_explosion(
+		player.global_position,
+		8.0,
+		1.5,
+		Vector2(300.0, 200.0)
+	)
+	player.destruir()
+
 func contabilizar_bases_enemigas() -> int:
 	return $ContenedorBasesEnemigas.get_child_count()
 
@@ -220,3 +235,10 @@ func _on_RestartTimer_timeout() -> void:
 	Eventos.emit_signal("nivel_terminado")
 	yield(get_tree().create_timer(1.0),"timeout")
 	get_tree().reload_current_scene()
+
+
+func _on_ActualizadorTimer_timeout():
+	tiempo_limite -= 1
+	Eventos.emit_signal("actualizar_tiempo",tiempo_limite)
+	if tiempo_limite == 0:
+		destruir_nivel()

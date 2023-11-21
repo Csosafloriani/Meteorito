@@ -53,4 +53,4 @@ func _on_AreaDeteccion_body_entered(body):
 
 
 func _on_AreaDeteccion_body_exited(body):
-	controlador_estados_ia(ESTADO_IA.PERSECUCION)
+	controlador_estados_ia(ESTADO_IA.ATACANDOP)

@@ -64,6 +64,12 @@ func _process(_delta: float) -> void:
 	player_input()
 
 # Metodos Custom
+func desactivar_controles():
+	controlador_estados(ESTADO.SPAWN)
+	empuje = Vector2.ZERO
+	motor_sfx.sonido_off()
+	laser.set_is_casting(false)
+
 func esta_input_activo() -> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false

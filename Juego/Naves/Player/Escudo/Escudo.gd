@@ -31,7 +31,7 @@ func get_esta_activado() -> bool:
 
 func controlar_energia(consumo:float) -> void:
 	energia += consumo
-	print("escudo: ", energia)
+	
 	if energia > energia_original:
 		energia = energia_original
 		

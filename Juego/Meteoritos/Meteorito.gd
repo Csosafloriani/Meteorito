@@ -76,7 +76,4 @@ func crear(pos: Vector2, dir: Vector2, tamanio: float):
 	
 	#Calcular hitpoints
 	hitpoints = hitpoints_base * tamanio
-	
-	#Solo debug
-	print("hitpoints: ", hitpoints)
 

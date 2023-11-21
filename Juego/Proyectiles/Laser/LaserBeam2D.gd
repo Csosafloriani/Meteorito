@@ -89,7 +89,6 @@ func controlar_energia(consumo:float) -> void:
 	energia += consumo
 	if energia > energia_original:
 		energia = energia_original
-	print ("energia laser: " , energia)
 
 
 func appear() -> void:

@@ -116,18 +116,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, true ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 517.163
@@ -151,6 +139,7 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 3 )
+disabled = true
 
 [node name="canion" parent="." index="2"]
 position = Vector2( 0, 0 )
@@ -166,7 +155,7 @@ position = Vector2( 0, -28 )
 position = Vector2( 0, 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-autoplay = "default"
+autoplay = "spawn"
 anims/default = SubResource( 1 )
 anims/spawn = SubResource( 2 )
 
@@ -186,6 +175,7 @@ shape = SubResource( 5 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
 [connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
 [connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]

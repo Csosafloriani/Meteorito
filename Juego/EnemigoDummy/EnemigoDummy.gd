@@ -11,8 +11,6 @@ func _on_Area2D_body_entered(body):
 		body.destruir()
 
 func recibir_danio(danio:float) -> void:
-	print("dañado")
 	hitpoints -= danio
-	print(hitpoints)
 	if hitpoints <= 0.0 :
 		queue_free()

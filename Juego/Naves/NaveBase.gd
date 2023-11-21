@@ -19,12 +19,9 @@ export var hitpoints:float = 10.0
 ## Atributos
 var estado_actual:int = ESTADO.SPAWN
 
-
-
 ## Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
-	animacion.play("spawn")
 
 ## Metodos custom
 func recibir_danio(danio:float) -> void:
@@ -39,9 +36,11 @@ func controlador_estados(nuevo_estado:int) -> void:
 		ESTADO.SPAWN:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(false)
+			print ("SPAWN ESTADO")
 		ESTADO.VIVO:
 			colisionador.set_deferred("disabled", false)
 			canion.set_puede_disparar(true)
+			print ("VIVO ESTADO")
 		ESTADO.INVENCIBLE:
 			colisionador.set_deferred("disabled", true)
 		ESTADO.MUERTO:
@@ -58,15 +57,10 @@ func controlador_estados(nuevo_estado:int) -> void:
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
 
-
-
-	
-
 # Señales internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
 		controlador_estados(ESTADO.VIVO)
-		animacion.play("default")
 
 
 func _on_body_entered(body: Node) -> void:

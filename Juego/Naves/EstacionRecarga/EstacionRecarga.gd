@@ -36,8 +36,6 @@ func controlar_energia() -> void:
 	if energia <= 0.0:
 		$VacioSFX.play()
 		carga_sfx.stop()
-	#solo debug, quitar
-	print("Energia estacion: ", energia)
 
 func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")

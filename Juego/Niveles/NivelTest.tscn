@@ -28,7 +28,7 @@ rele_masa = ExtResource( 14 )
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1897, 2247 )
+position = Vector2( -632, 1400 )
 
 [node name="TriggersEnemigosInterceptores" type="Node" parent="."]
 
@@ -40,7 +40,7 @@ numero_peligros = 2
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 845, 1447 )
+position = Vector2( -151, 1420 )
 tipo_peligro = "Meteorito"
 numero_peligros = 12
 

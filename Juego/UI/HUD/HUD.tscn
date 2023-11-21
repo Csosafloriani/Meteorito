@@ -47,6 +47,7 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="FadeCanvas/ColorRect"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -77,4 +78,20 @@ text = "En Zona De Recarga"
 align = 1
 valign = 1
 
+[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+margin_left = 11.0
+margin_top = 947.0
+margin_right = 390.0
+margin_bottom = 1067.0
+
+[node name="Label" parent="InfoMeteoritos" index="1"]
+margin_left = 16.0
+margin_top = 7.0
+margin_right = 364.0
+margin_bottom = 118.0
+text = ""
+align = 1
+valign = 1
+
 [editable path="InfoZonaRecarga"]
+[editable path="InfoMeteoritos"]

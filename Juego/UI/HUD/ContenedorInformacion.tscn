@@ -114,3 +114,9 @@ margin_right = 374.0
 margin_bottom = 108.0
 custom_fonts/font = SubResource( 1 )
 text = "texto"
+
+[node name="AutoOcultarTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="AutoOcultarTimer" to="." method="_on_AutoOcultarTimer_timeout"]

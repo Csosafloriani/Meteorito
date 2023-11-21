@@ -29,7 +29,7 @@ tiempo_limite = 25
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -632, 1400 )
+position = Vector2( 4048, 1280 )
 
 [node name="TriggersEnemigosInterceptores" type="Node" parent="."]
 

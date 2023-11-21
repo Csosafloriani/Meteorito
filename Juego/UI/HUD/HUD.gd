@@ -5,6 +5,7 @@ extends CanvasLayer
 onready var info_zona_recarga:ContenedorInformacion = $InfoZonaRecarga
 onready var info_meteoritos:ContenedorInformacion = $InfoMeteoritos
 onready  var info_tiempo_restante:ContenedorInformacion = $InfoTiempoResta
+onready var info_laser:ContenedorInformacionEnergia = $InfoLaser
 
 ## Metodos
 func _ready() -> void:
@@ -18,6 +19,12 @@ func conectar_seniales() -> void:
 	Eventos.connect("detecto_zona_recarga", self, "_on_detecto_zona_recarga")
 	Eventos.connect("cambio_numero_meteoritos",self, "_on_actualizar_info_meteoritos")
 	Eventos.connect("actualizar_tiempo", self, "_on_actualizar_info_tiempo")
+	Eventos.connect("cambio_energia_laser", self, "_on_actualizar_energia_laser")
+	Eventos.connect("ocultar_energia_laser", info_laser, "ocultar")
+
+func _on_actualizar_energia_laser(energia_max:float, energia_actual:float) -> void:
+	info_laser.mostrar()
+	info_laser.actualizar_energia(energia_max, energia_actual)
 
 func _on_actualizar_info_meteoritos(numero:int) -> void:
 	info_meteoritos.mostrar_suavizado()

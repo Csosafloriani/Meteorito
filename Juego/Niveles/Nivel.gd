@@ -31,6 +31,8 @@ func _ready() -> void:
 	crear_contenedores()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
+	Eventos.emit_signal("nivel_iniciado")
+
 
 ## Metodos custom
 func contabilizar_bases_enemigas() -> int:
@@ -170,7 +172,7 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 			camara_nivel,
 			tiempo_transicion_camara
 		)
-		
+	$RestartTimer.start()
 	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
 		new_explosion.global_position = posicion + crear_posicion_aleatoria(100.0, 50.0)
@@ -210,3 +212,9 @@ func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio:fl
 func _on_TweenCamara_tween_completed(object, _key) -> void:
 	if object.name == "CamaraPlayer":
 		object.global_position = $Player.global_position
+
+
+func _on_RestartTimer_timeout() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()

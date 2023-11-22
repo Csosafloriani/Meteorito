@@ -1,5 +1,5 @@
 #EstacionRecarga.gd
-class_name EsstacionRecarga
+class_name EstacionRecarga
 extends Node2D
 
 # Atributos Onready

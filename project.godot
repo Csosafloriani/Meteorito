@@ -60,7 +60,7 @@ _global_script_classes=[ {
 "path": "res://Juego/Naves/Player/Escudo/Escudo.gd"
 }, {
 "base": "Node2D",
-"class": "EsstacionRecarga",
+"class": "EstacionRecarga",
 "language": "GDScript",
 "path": "res://Juego/Naves/EstacionRecarga/EstacionRecarga.gd"
 }, {
@@ -140,7 +140,7 @@ _global_script_class_icons={
 "EnemigoInterceptor": "",
 "EnemigoOrbital": "",
 "Escudo": "",
-"EsstacionRecarga": "",
+"EstacionRecarga": "",
 "Estela": "",
 "ExplosionMeteorito": "",
 "Meteorito": "",

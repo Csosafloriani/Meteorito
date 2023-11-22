@@ -53,7 +53,7 @@ position = Vector2( 2705, 1699 )
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" groups=["minimapa"] instance=ExtResource( 13 )]
-position = Vector2( 2667, 403 )
+position = Vector2( 2439, 3136 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )

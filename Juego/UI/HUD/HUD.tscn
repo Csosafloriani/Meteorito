@@ -125,7 +125,7 @@ margin_top = -120.0
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="MiniMapa" parent="." instance=ExtResource( 5 )]
+[node name="MiniMapa" parent="." groups=["contenedor_info"] instance=ExtResource( 5 )]
 
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Juego/UI/HUD/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Niveles/Musicas/Nivel.wav" type="AudioStream" id=16]
+[ext_resource path="res://Juego/Niveles/Musicas/Combate.wav" type="AudioStream" id=17]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -25,11 +27,13 @@ explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 7 )
 rele_masa = ExtResource( 14 )
 tiempo_limite = 120
+musica_nivel = ExtResource( 16 )
+musica_combate = ExtResource( 17 )
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2016, 1982 )
+position = Vector2( -2137, 1967 )
 
 [node name="TriggersEnemigosInterceptores" type="Node" parent="."]
 
@@ -41,7 +45,7 @@ numero_peligros = 2
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 1033, 500 )
+position = Vector2( -1398, 1995 )
 tipo_peligro = "Meteorito"
 numero_peligros = 12
 

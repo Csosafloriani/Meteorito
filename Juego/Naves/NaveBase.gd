@@ -12,6 +12,7 @@ onready var animacion:AnimationPlayer = $AnimationPlayer
 onready var impactoSFX:AudioStreamPlayer = $AudioStreamPlayer
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var canion:Canion = $canion
+onready var barra_salud:BarraSalud = $BarraSalud
 
 ## Atributos Export
 export var hitpoints:float = 10.0
@@ -21,6 +22,7 @@ var estado_actual:int = ESTADO.SPAWN
 
 ## Metodos
 func _ready() -> void:
+	barra_salud.set_valores(hitpoints)
 	controlador_estados(estado_actual)
 
 ## Metodos custom
@@ -28,6 +30,8 @@ func recibir_danio(danio:float) -> void:
 	hitpoints -= danio
 	if hitpoints <= 0.0 :
 		destruir()
+	
+	barra_salud.controlar_barra(hitpoints, true)
 	impactoSFX.play()
 
 

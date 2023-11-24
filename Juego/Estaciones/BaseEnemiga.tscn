@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/Base2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoOrbital.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Estaciones/PosicionesSpawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/RutaEnemigo.gd" type="Script" id=10]
+[ext_resource path="res://Juego/UI/BarraSalud.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -149,6 +150,15 @@ _data = {
 "points": PoolVector2Array( 66.6708, 138.104, -66.6708, -138.104, -459.126, -3.6048, 0, 0, 0, 0, -421.68, -200.864, -94.883, 12.2612, 94.883, -12.2612, -313.48, -347.532, -80.6349, 2.51984, 80.6349, -2.51984, -146.982, -456.849, -65.5159, -2.51984, 65.5159, 2.51984, -1.01837, -507.233, -35.2778, -52.9167, 35.2778, 52.9167, 178.394, -449.617, -73.0754, 10.0794, 73.0754, -10.0794, 311.7, -380.241, -80.6349, -68.0357, 80.6349, 68.0357, 430.378, -197.633, -30.2381, -42.8373, 30.2381, 42.8373, 472.553, -1.68671, -17.6389, -83.1548, 17.6389, 83.1548, 437.938, 187.903, 60.4762, -45.3572, -60.4762, 45.3572, 349.797, 330.915, 40.3175, -70.5556, -40.3175, 70.5556, 196.033, 427.288, 37.7976, 35.2778, -37.7976, -35.2778, 2.24142, 474.237, 70.5556, -20.1587, -70.5556, 20.1587, -151.706, 447.447, 32.7579, 75.5953, -32.7579, -75.5953, -318.783, 359.746, 62.9961, 25.1984, -62.9961, -25.1984, -411.249, 240.82, -22.6786, 50.3968, 22.6786, -50.3968, -460.213, 118.417, 0, 0, 0, 0, -456.606, -1.08496, 0, 0, 0, 0, -459.126, -3.6048 )
 }
 
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.376471, 0.137255, 0.792157, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
 [node name="BaseEnemiga" type="Node2D"]
 z_index = 40
 script = ExtResource( 6 )
@@ -209,6 +219,15 @@ curve = SubResource( 4 )
 script = ExtResource( 10 )
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 11 )]
+margin_left = -107.0
+margin_top = -287.0
+margin_right = 107.0
+margin_bottom = -260.0
+rect_rotation = 0.0
+custom_styles/fg = SubResource( 5 )
+siempre_visible = true
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]

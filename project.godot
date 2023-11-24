@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ProgressBar",
+"class": "BarraSalud",
+"language": "GDScript",
+"path": "res://Juego/UI/BarraSalud.gd"
+}, {
 "base": "Node2D",
 "class": "BaseEnemiga",
 "language": "GDScript",
@@ -28,6 +33,16 @@ _global_script_classes=[ {
 "class": "Canion",
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/canion.gd"
+}, {
+"base": "NinePatchRect",
+"class": "ContenedorInformacion",
+"language": "GDScript",
+"path": "res://Juego/UI/HUD/ContenedorInformacion.gd"
+}, {
+"base": "ContenedorInformacion",
+"class": "ContenedorInformacionEnergia",
+"language": "GDScript",
+"path": "res://Juego/UI/HUD/ContenedorInformacionEnergia.gd"
 }, {
 "base": "NaveBase",
 "class": "EnemigoBase",
@@ -50,7 +65,7 @@ _global_script_classes=[ {
 "path": "res://Juego/Naves/Player/Escudo/Escudo.gd"
 }, {
 "base": "Node2D",
-"class": "EsstacionRecarga",
+"class": "EstacionRecarga",
 "language": "GDScript",
 "path": "res://Juego/Naves/EstacionRecarga/EstacionRecarga.gd"
 }, {
@@ -120,15 +135,18 @@ _global_script_classes=[ {
 "path": "res://Juego/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
+"BarraSalud": "",
 "BaseEnemiga": "",
 "CamaraJuego": "",
 "CamaraPlayer": "",
 "Canion": "",
+"ContenedorInformacion": "",
+"ContenedorInformacionEnergia": "",
 "EnemigoBase": "",
 "EnemigoInterceptor": "",
 "EnemigoOrbital": "",
 "Escudo": "",
-"EsstacionRecarga": "",
+"EstacionRecarga": "",
 "Estela": "",
 "ExplosionMeteorito": "",
 "Meteorito": "",
@@ -154,6 +172,7 @@ config/icon="res://Icono.png"
 
 Eventos="*res://Juego/Autoload/Eventos.gd"
 DatosJuego="*res://Juego/Autoload/DatosJuego.gd"
+MusicaJuego="*res://Juego/Autoload/MusicaJuego.tscn"
 
 [debug]
 
@@ -235,6 +254,11 @@ recarga_escudo={
 recarga_laser={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+minimapa={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777218,"unicode":0,"echo":false,"script":null)
  ]
 }
 

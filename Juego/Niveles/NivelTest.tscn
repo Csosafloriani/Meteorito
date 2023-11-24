@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Juego/Niveles/Fondos/Negro.png" type="Texture" id=9]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=10]
 [ext_resource path="res://Juego/Naves/EstacionRecarga/EstacionRecarga.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Juego/UI/HUD/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Niveles/Musicas/Nivel.wav" type="AudioStream" id=16]
+[ext_resource path="res://Juego/Niveles/Musicas/Combate.wav" type="AudioStream" id=17]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,33 +26,38 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 7 )
 rele_masa = ExtResource( 14 )
+tiempo_limite = 120
+musica_nivel = ExtResource( 16 )
+musica_combate = ExtResource( 17 )
+
+[node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1897, 2247 )
+position = Vector2( -2137, 1967 )
 
 [node name="TriggersEnemigosInterceptores" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersEnemigosInterceptores" instance=ExtResource( 5 )]
-position = Vector2( 2336, 2248 )
+position = Vector2( 3864, 1760 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
 
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 845, 1447 )
+position = Vector2( -1398, 1995 )
 tipo_peligro = "Meteorito"
 numero_peligros = 12
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
-[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( 3241, 1075 )
+[node name="EstacionRecarga" parent="ContenedorEstaciones" groups=["minimapa"] instance=ExtResource( 11 )]
+position = Vector2( 2705, 1699 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
-[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
-position = Vector2( 2323, 315 )
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" groups=["minimapa"] instance=ExtResource( 13 )]
+position = Vector2( 2439, 3136 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -61,71 +69,13 @@ script = ExtResource( 10 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2( 500, 500 )
-transform = Transform2D( 1, 0, 0, 1, 500, 500 )
-scroll_ignore_camera_zoom = true
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 2.0
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 256, 256 )
+[node name="ActualizadorTimer" type="Timer" parent="."]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 9 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 500, 0 )
-texture = ExtResource( 9 )
-
-[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 500, 500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -500, 500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -500, 0 )
-texture = ExtResource( 9 )
-
-[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -500, -500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, -500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite9" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 500, -500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1000, -500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite11" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1000, 0 )
-texture = ExtResource( 9 )
-
-[node name="Sprite12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1000, 500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1500, -500 )
-texture = ExtResource( 9 )
-
-[node name="Sprite14" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1500, 0 )
-texture = ExtResource( 9 )
-
-[node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1500, 500 )
-texture = ExtResource( 9 )
+[node name="StarFieldBackground" parent="." instance=ExtResource( 9 )]
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]

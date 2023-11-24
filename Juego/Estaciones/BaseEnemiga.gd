@@ -12,6 +12,7 @@ export var intervalo_spawn:float = 0.8
 onready var impacto_sfx:AudioStreamPlayer2D = $ImpactoSFX
 onready var ruta_enemigo:Path2D = $RutaEnemigo
 onready var timer_spawner:Timer = $TimerSpawnerEnemigos
+onready var barra_salud:BarraSalud = $BarraSalud
 
 ## Atributos
 var esta_destruida:bool = false
@@ -19,15 +20,18 @@ var posicion_spawn:Vector2 = Vector2.ZERO
 
 ## Metodos
 func _ready():
+	barra_salud.set_valores(hitpoints)
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
 
+# warning-ignore:unused_argument
 func _process(delta:float) -> void:
 	var player_objetivo:Player = DatosJuego.get_player_actual()
 	if not player_objetivo:
 		return
 	
 	var dir_player:Vector2 = player_objetivo.global_position - global_position
+# warning-ignore:unused_variable
 	var angulo_player:float = rad2deg(dir_player.angle())
 
 ## Metodos custom
@@ -90,6 +94,7 @@ func recibir_danio(danio:float) -> void:
 		esta_destruida = true
 		destruir()
 	
+	barra_salud.set_hitpoints_actual(hitpoints)
 	impacto_sfx.play()
 
 func destruir():
@@ -101,6 +106,7 @@ func destruir():
 	]
 	
 	Eventos.emit_signal("base_destruida", self, posicion_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido", self)
 	queue_free()
 
 func _on_AreaColision_body_entered(body):

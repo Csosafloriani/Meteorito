@@ -1,10 +1,10 @@
 #EstacionRecarga.gd
-class_name EsstacionRecarga
+class_name EstacionRecarga
 extends Node2D
 
 # Atributos Onready
 onready var carga_sfx:AudioStreamPlayer = $CargaSFX
-
+onready var barra_energia:ProgressBar = $BarraEnergia
 
 # Atributos Export
 export var energia:float = 6.0
@@ -15,6 +15,10 @@ var nave_player:Player = null
 var player_en_zona:bool = false
 
 # Metodos
+func _ready() -> void:
+	barra_energia.max_value = energia
+	barra_energia.value = energia
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not puede_recargar(event):
 		return
@@ -26,7 +30,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action("recarga_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
 	
-	if event.is_action_released("recarga_escudo") or event.is_action_released("recarga_laser"):
+	if event.is_action_released("recarga_laser"):
+		Eventos.emit_signal("ocultar_energia_laser")
+		carga_sfx.stop()
+		$VacioSFX.stop()
+	elif event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 		carga_sfx.stop()
 		$VacioSFX.stop()
 
@@ -36,6 +45,8 @@ func controlar_energia() -> void:
 	if energia <= 0.0:
 		$VacioSFX.play()
 		carga_sfx.stop()
+	
+	barra_energia.value = energia
 
 func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")
@@ -60,8 +71,10 @@ func _on_AreaRecarga_body_entered(body):
 	if body is Player:
 		player_en_zona = true
 		nave_player = body
+		Eventos.emit_signal("detecto_zona_recarga", true)
 
 func _on_AreaRecarga_body_exited(body):
 	carga_sfx.stop()
 	$VacioSFX.stop()
 	player_en_zona = false
+	Eventos.emit_signal("detecto_zona_recarga", false)

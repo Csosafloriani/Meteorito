@@ -41,6 +41,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="FadeCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
 anchor_right = 1.0
